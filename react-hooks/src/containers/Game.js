@@ -26,8 +26,13 @@ const Game = ({ squares, onClick }) => {
 
         setXisNext(!xIsNext); // alternate the boolean value of xisNext state
 
-
     }
+
+    const resetButton = () => (
+        <button onClick={() => setBoard(Array(9).fill(null))}>
+            Start Game
+        </button>
+    )
 
     return (
         <>
@@ -36,6 +41,8 @@ const Game = ({ squares, onClick }) => {
                 <p>{winner ? 'Winner: ' + winner : 'Next Player: ' + (xIsNext ? 'X' : 'O')}</p>
 
                 <Board  style={styles} squares={board} onClick={handleClick} />
+                <br/>
+                {resetButton()}
 
             </div>
         </>
