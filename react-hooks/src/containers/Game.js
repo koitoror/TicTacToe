@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Board from '../components/Board'
+import calculateWinner from './helpers'
 
 const styles = {
     width: '200px',
@@ -9,11 +10,22 @@ const styles = {
 const Game = ({ squares, onClick }) => {
 
     const [board, setBoard] = useState(Array(9).fill(null));
+    const [xIsNext, setXisNext] = useState(true)
+    const winner = calculateWinner(board);
+
 
     const handleClick = i => {
 
-        const boardCopy = [...board];
-        setBoard(boardCopy);
+        const boardCopy = [...board]; // copy the board state
+
+        if (winner || boardCopy[i]) return; //
+
+        boardCopy[i] = xIsNext ? 'X' : 'O';  // Put an X or an O in the clicked square (( and save board state as boardCopy state ))
+
+        setBoard(boardCopy); // overwrite the board state to render to putting above of an X or an O in the clicked square
+
+        setXisNext(!xIsNext); // alternate the boolean value of xisNext state
+
 
     }
 
