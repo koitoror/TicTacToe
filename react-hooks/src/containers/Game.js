@@ -18,7 +18,7 @@ const Game = ({ squares, onClick }) => {
 
         const boardCopy = [...board]; // copy the board state
 
-        if (winner || boardCopy[i]) return; //
+        if (winner || boardCopy[i]) return; // if the board has been clicked or winner found true it exits being clicked
 
         boardCopy[i] = xIsNext ? 'X' : 'O';  // Put an X or an O in the clicked square (( and save board state as boardCopy state ))
 
