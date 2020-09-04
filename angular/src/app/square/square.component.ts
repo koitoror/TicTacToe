@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { SquareEnum } from './SquareEnum';
 
 @Component({
   selector: 'app-square',
@@ -6,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./square.component.css']
 })
 export class SquareComponent implements OnInit {
-
+  @Input() public piece: SquareEnum = SquareEnum.EMPTY;
+  @Input() public row: number;
+  @Input() public col: number;
   constructor() { }
 
   ngOnInit(): void {
