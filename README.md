@@ -1,9 +1,10 @@
 # Implementing the TicTacToe Game
 
-using various technlogies:
+using various technologies:
 
 - Vanilla-CSS
 - React-Hooks
+- Vue-JS
 - Vue
 - Angular
 - Ember
