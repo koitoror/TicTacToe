@@ -4,6 +4,7 @@ using various technologies:
 
 - Vanilla-CSS
 - React-Hooks
+- React-TS
 - Vue-JS
 - Vue
 - Angular
