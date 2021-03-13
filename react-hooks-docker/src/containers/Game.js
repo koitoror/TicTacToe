@@ -1,0 +1,55 @@
+import * as React from 'react'
+import calculateWinner from './helpers'
+import Board from '../components/Board';
+
+// const { useState } = React;
+const { useState } = React;
+
+const styles = {
+    width: '200px',
+    margin: '20px auto',
+};
+
+const Game = () => {
+
+    const [board, setBoard] = useState(Array(9).fill(null));
+    const [xIsNext, setXisNext] = useState(true)
+    const winner = calculateWinner(board);
+
+
+    const handleClick = i => {
+
+        const boardCopy = [...board]; // copy the board state [LEAVE PURE FUNCTION STATELESS]
+
+        if (winner || boardCopy[i]) return; // if the board has been clicked or winner found true it exits being clicked
+
+        boardCopy[i] = xIsNext ? 'X' : 'O';  // Put an X or an O in the clicked square (( and save board state as boardCopy state ))
+
+        setBoard(boardCopy); // overwrite the board state to render to putting above of an X or an O in the clicked square
+
+        setXisNext(!xIsNext); // alternate the boolean value of xisNext state
+
+    }
+
+    const resetButton = () => (
+        <button onClick={() => setBoard(Array(9).fill(null))}>
+            Start Game
+        </button>
+    )
+
+    return (
+        <>
+            <div style={styles}>
+
+                <p>{winner ? 'Winner: ' + winner : 'Next Player: ' + (xIsNext ? 'X' : 'O')}</p>
+
+                <Board  style={styles} squares={board} onClick={handleClick} />
+                <br/>
+                {resetButton()}
+
+            </div>
+        </>
+    )
+}
+
+export default Game

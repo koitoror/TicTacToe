@@ -15,14 +15,25 @@ const calculateWinner = (squares: SquareValue[]): SquareValue => {
         [0, 4, 8],
         [2, 4, 6]
     ];
-    for (let i = 0; i < lines.length; i++) {
-        const [a, b, c] = lines[i];
+
+    lines.forEach(line =>{
+        const [a, b, c] = line;
         if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
             return squares[a];
         }
-    }
+    })
     return null;
-};
+
+    }
+
+    // for (let i = 0; i < lines.length; i++) {
+    //     const [a, b, c] = lines[i];
+    //     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+    //         return squares[a];
+    //     }
+    // }
+    // return null;
+// };
 
 interface SquareProps {
     onClick(): void;
@@ -133,6 +144,7 @@ const Game: React.FC = () => {
                     squares={current.squares}
                     onClick={i => handleClick(i)}
                 />
+                p
             </div>
             <div className="game-info">
                 <div>{status}</div>
